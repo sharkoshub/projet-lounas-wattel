@@ -1,3 +1,7 @@
+html{
+    background-color: #222;
+}
+
 img {
     width: 200px;
     height: 200px;
@@ -9,3 +13,11 @@ article {
     
     flex-wrap: wrap;
 }
+
+.dropzone {
+    width: 200px;
+    height: 20px;
+    background: blueviolet;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
