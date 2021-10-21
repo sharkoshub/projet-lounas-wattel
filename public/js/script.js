@@ -53,6 +53,7 @@ btnSearch.addEventListener('click', () => searchPhotos(search.value));
 //let addCollection = document.querySelector('button#addCollection');
 
 const insertCollection = async function (nomCollection, sourceImage) {
+    /*
     db.collection(nomCollection).add({
         url: sourceImage
     })
@@ -62,6 +63,29 @@ const insertCollection = async function (nomCollection, sourceImage) {
         .catch((error) => {
             console.error("Error adding document: ", error);
         });
+        */
+    let collection = db.collection("collection").doc(nomCollection);
+
+    collection.get().then((doc) => {
+        if (doc.exists) {
+            console.log('collection d\'images existe');
+            let tmp = doc.data().urls;
+            let nvUrls = tmp + "\n" + sourceImage;
+            collection.set({
+                urls: nvUrls
+            })
+
+        } else {
+            // 
+            collection.set({
+                urls: sourceImage
+            })
+        }
+    }).catch((error) => {
+        console.log("Error getting document:", error);
+    });
+
+
 }
 /*
 
