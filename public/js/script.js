@@ -49,13 +49,12 @@ btnSearch.addEventListener('click', () => searchPhotos(search.value));
 // Collection
 /*------------------------------------------------------ */
 
-/*
-let addCollection = document.querySelector('button#addCollection');
 
-const insertCollection = async function (inputCollectionName) {
-    db.collection("collection").add({
-        titre: inputCollectionName,
-        url: 'source.png'
+//let addCollection = document.querySelector('button#addCollection');
+
+const insertCollection = async function (nomCollection, sourceImage) {
+    db.collection(nomCollection).add({
+        url: sourceImage
     })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
@@ -64,7 +63,7 @@ const insertCollection = async function (inputCollectionName) {
             console.error("Error adding document: ", error);
         });
 }
-
+/*
 
 let inputCollectionName = document.querySelector('input#inputCollectionName');
 
@@ -73,20 +72,27 @@ addCollection.addEventListener('click', () => insertCollection(inputCollectionNa
 
 let articleCollection = document.querySelector('article#articleCollection');
 
-const displayCollection = async function () {
-    for (let i = 0; i < 4; i++) {
-        let aside = document.createElement('aside');
-        aside.id = i;
-        aside.className = 'dropzone';
-        articleCollection.appendChild(aside);
-    }
+/**
+ * Affiche les collections
+ * @param {*} nomCollection 
+ */
+const displayCollection = async function (nomCollection) {
+
+    let aside = document.createElement('aside');
+    aside.id = nomCollection;
+    aside.className = 'dropzone';
+    articleCollection.appendChild(aside);
+    let h1 = document.createElement('h1');
+    //h1.className = 'dropzone';
+    h1.innerHTML = nomCollection;
+    aside.appendChild(h1);
 }
 
 
-let showCollection = document.querySelector('button#showCollection');
+let inputAddCollection = document.querySelector('input#inputAddCollection');
 
 
-showCollection.addEventListener('click', () => displayCollection());
+inputAddCollection.addEventListener('change', () => displayCollection(inputAddCollection.value));
 
 let dragged;
 
@@ -135,7 +141,7 @@ document.addEventListener("drop", function (event) {
     // move dragged elem to the selected drop target
     if (event.target.className == "dropzone") {
         event.target.style.background = "";
-        console.log(dragged.sr);
+        insertCollection(event.target.id, dragged.src);
         alert(dragged.src + ' est drop  dans la collection ' + event.target.id);
     }
 
