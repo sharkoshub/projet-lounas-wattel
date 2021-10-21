@@ -16,23 +16,26 @@
 </head>
 
 <body>
-    <li id="menu">
-        <ul><img src="./img/logo.jpg" id="logo-fix"></ul>
-        <ul><button id="homePage"><a href="index.html">Home</a></button></ul>
-        <ul><input type="text" id="input-search"><button id="btn-search">Search</button></ul>
-        <ul><button id="showCollection">My Collection</button></ul>
-    </li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <ul id="menu" class="navbar-nav me-auto">
+            <li class="nav-item"><img src="./img/logo.jpg" id="logo-fix"></li>
+            <li class="nav-item"><button id="homePage"><a href="index.html">Home</a></button></li>
+            <li class="nav-item"><button id="showCollection">My Collection</button></li>
+        </ul>
+    </nav>
 
     <hr>
     </article>
     <div class="container">
+        <input type="text" id="input-search" placeholder="Search images...">
+        <button id="btn-search" class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
         <div class="row">
             <div class="col-lg-8">
                 <article id="articleImage"></article>
             </div>
             <div class="col-lg-4">
                 <article id="articleListCol"></article>
-                <input type="text" id="inputAddCollection">
+                <input type="text" id="inputAddCollection" placeholder="Add collection">
             </div>
         </div>
     </div>
