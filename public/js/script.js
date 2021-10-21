@@ -19,6 +19,10 @@ let btnSearch = document.querySelector('button#btn-search');
 
 let articleImage = document.querySelector('article#articleImage');
 
+if (articleImage.innerHTML == '') {
+    articleImage.innerHTML = '<p>Aucun résultat</p>'
+}
+
 const displayImage = async function (photos) {
 
     photos.forEach(element => {
@@ -49,21 +53,30 @@ btnSearch.addEventListener('click', () => searchPhotos(search.value));
 // Collection
 /*------------------------------------------------------ */
 
+let articleListCol = document.querySelector('#articleListCol');
 
-//let addCollection = document.querySelector('button#addCollection');
+let ul = document.createElement('ul');
+
+const listCollection = async function () {
+    db.collection("collection").get().then((querySnapshot) => {
+
+        querySnapshot.forEach((doc) => {
+            let li = document.createElement('li');
+            li.className = 'dropzone'
+            li.id = doc.id;
+            li.innerHTML = doc.id;
+            ul.appendChild(li);
+        });
+    });
+    articleListCol.appendChild(ul);
+}
+
+let showCollection = document.querySelector('button#showCollection');
+
+showCollection.addEventListener('click', () => listCollection());
 
 const insertCollection = async function (nomCollection, sourceImage) {
-    /*
-    db.collection(nomCollection).add({
-        url: sourceImage
-    })
-        .then((docRef) => {
-            console.log("Document written with ID: ", docRef.id);
-        })
-        .catch((error) => {
-            console.error("Error adding document: ", error);
-        });
-        */
+
     let collection = db.collection("collection").doc(nomCollection);
 
     collection.get().then((doc) => {
@@ -87,14 +100,8 @@ const insertCollection = async function (nomCollection, sourceImage) {
 
 
 }
-/*
 
-let inputCollectionName = document.querySelector('input#inputCollectionName');
-
-addCollection.addEventListener('click', () => insertCollection(inputCollectionName.value));
-*/
-
-let articleCollection = document.querySelector('article#articleCollection');
+let articleCollection = document.querySelector('article#articleListCol');
 
 /**
  * Affiche les collections
@@ -102,14 +109,11 @@ let articleCollection = document.querySelector('article#articleCollection');
  */
 const displayCollection = async function (nomCollection) {
 
-    let aside = document.createElement('aside');
-    aside.id = nomCollection;
-    aside.className = 'dropzone';
-    articleCollection.appendChild(aside);
-    let h1 = document.createElement('h1');
-    //h1.className = 'dropzone';
-    h1.innerHTML = nomCollection;
-    aside.appendChild(h1);
+    let li = document.createElement('li');
+    li.className = 'dropzone';
+    li.id = nomCollection;
+    li.innerHTML = nomCollection;
+    ul.appendChild(li);
 }
 
 

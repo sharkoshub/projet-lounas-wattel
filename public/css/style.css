@@ -1,23 +1,130 @@
 html{
+
     background-color: #222;
-}
-
-img {
+    
+    }
+    
+    
+    
+    img {
+    
     width: 200px;
+    
     height: 200px;
+    
     margin-left: 100px;
+    
     margin-top: 50px;
-}
-
-article {
+    
+    }
+    
+    
+    
+    article {
     
     flex-wrap: wrap;
-}
-
-.dropzone {
+    
+    }
+    
+    
+    
+    .dropzone {
+    
     width: 200px;
-    height: 20px;
-    background: blueviolet;
+    
+    background: #c4e3fa;
+    
     margin-bottom: 10px;
-    padding: 100px;
-  }
+    
+    padding: 20px;
+    text-align: center;
+        display: block;
+    
+    }
+    
+    
+    
+    li#menu {
+    
+    display: flex;
+    
+    padding:0;
+    
+    background-color: #ccc;
+    
+    margin-top: 0px;
+    
+    }
+    
+    
+    
+    article > img {
+    
+    width: 200px;
+    
+    height: 200px;
+    
+    margin-left: 100px;
+    
+    margin-top: 50px;
+    
+    }
+    
+    
+    
+    
+    #logo-fix{
+    
+    width: 150px;
+    
+    height: 150px;
+    
+    margin-top: 0px;
+    
+    }
+    
+    
+    
+    
+    hr{
+    
+    color: black;
+    
+    font-weight: bold;
+    
+    }
+    
+    
+    
+    
+    #homePage{
+    
+    margin-left: 300px;
+    
+    
+    
+    }
+    
+    
+    
+    
+    #homePage, #addCollection, #showCollection, #inputCollectionName{
+    
+    margin-top: 100px;
+    
+    width: 200px;
+    
+  
+    
+    
+    
+    }
+    
+    
+    
+    #recherche{
+    
+    margin: 200px 200px 200px 200px;
+    
+    }
+
